@@ -1,0 +1,20 @@
+.root {
+    -fx-background-color: red;
+    -fx-font-size: 14pt;
+}
+
+#bar {
+	-fx-background-color: #196CB9;
+}
+#leftPanel {
+    -fx-background-color: #6ab7ff;
+}
+#rightPanel {
+    -fx-background-color: white;
+}
+#addItemPanel {
+    -fx-background-color: white;
+}
+#addItemButton {
+    -fx-background-color: #6ab7ff;
+}
