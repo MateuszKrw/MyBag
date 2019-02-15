@@ -22,9 +22,14 @@
       <menus>
         <Menu text="File">
           <items>
-            <MenuItem text="New"/>
-            <MenuItem text="Save"/>
-            <MenuItem text="Open"/>
+            <MenuItem text="New" onAction="#newPackingClicked"/>
+            <MenuItem text="Save" onAction="#savePackingClicked"/>
+            <MenuItem text="Open" onAction="#newPackingClicked"/>
+          </items>
+        </Menu>
+        <Menu text="Pack">
+          <items>
+            <MenuItem text="Add Item" onAction="#showAddItemPanel"/>
           </items>
         </Menu>
         <Menu text="About">
@@ -38,32 +43,8 @@
       <ScrollPane fx:id="scrollLeft">
         <VBox fx:id="elementsPanel"/>
       </ScrollPane>
-      <Button fx:id="addItemButton" onAction="#addItemButton"/>
+      <Button fx:id="addItemButton" onAction="#showAddItemPanel"/>
     </VBox>
-    <GridPane fx:id="addItemPanel" GridPane.columnIndex="1" GridPane.rowIndex="1" 
-    		hgap="10" vgap="10">
-    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
-      <Label fx:id="nameLabel" text="Name" 
-      		GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-      <TextField fx:id="nameTextField" GridPane.columnSpan="3"
-      		GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-      <Label fx:id="weightLabel" text="Weight" 
-      		GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-      <TextField fx:id="weightTextField" GridPane.columnSpan="3"
-      		GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-      <Label fx:id="containerLabel" text="Container" 
-      		GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-      <CheckBox fx:id="containerCheckBox" 
-      		GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-      <Label fx:id="stateLabel" text="State" 
-      		GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-      <ComboBox fx:id="stateComboBox" 
-      		GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-      <Button fx:id="addButton" text="Add" onAction="#addButton"
-      		GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-      <Button fx:id="backButton" text="Back" onAction="#backButton"
-      		GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-    </GridPane>
     <GridPane fx:id="rightPanel" GridPane.columnIndex="1" GridPane.rowIndex="1">
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
       <Label fx:id="labelRight" text="right"/>

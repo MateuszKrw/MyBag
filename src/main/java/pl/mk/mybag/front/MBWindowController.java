@@ -7,23 +7,22 @@
 
 package pl.mk.mybag.front;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
 import pl.mk.mybag.back.Element;
-import pl.mk.mybag.back.State;
 
 public class MBWindowController {
 	
@@ -33,21 +32,9 @@ public class MBWindowController {
 	@FXML private ScrollPane scrollLeft;
 	@FXML private VBox elementsPanel;	
 	@FXML private GridPane rightPanel;
-	@FXML private GridPane addItemPanel;
 	@FXML private Label labelRight;
 	@FXML private Button addItemButton;
 
-	@FXML private Label nameLabel;
-	@FXML private TextField nameTextField;
-	@FXML private Label containerLabel;
-	@FXML private CheckBox containerCheckBox;
-	@FXML private Label weightLabel;
-	@FXML private TextField weightTextField;
-	@FXML private Label stateLabel;
-	@FXML private ComboBox<State> stateComboBox;
-	@FXML private Button addButton;
-	@FXML private Button backButton;
-	
 	private ArrayList<Element> elementList = new ArrayList<Element>();
 
 	public MBWindowController() { }
@@ -57,8 +44,6 @@ public class MBWindowController {
 		bar.setPrefHeight(100);
 
 		initLeftPanel();
-
-		addItemPanel.setVisible(false);
 	}
 
 	public void initLeftPanel() {
@@ -72,31 +57,34 @@ public class MBWindowController {
 		addItemButton.setText("+");
 		addItemButton.prefWidthProperty().bind(leftPanel.widthProperty());
 
-		for(int i = 0; i < 8; i++) {
+		for(int i = 0; i < 4; i++) {
 			addItem(new Element("Element " + i));
 		}
-
 		addItemsToPanel(elementList);
-	}
-	
-	public void initAddItemPanel() {
-		
 	}
 
 	@FXML public void info() {
 		rightPanel.setVisible(false);
 	}
 
-	@FXML public void addItemButton() {
-		addItemPanel.setVisible(true);
-		rightPanel.setVisible(false);
+	@FXML public void showAddItemPanel() throws IOException, URISyntaxException {
+//		FXMLLoader fxmlloader = new FXMLLoader();
+		Node node = (Node) FXMLLoader.load(ClassLoader.getSystemResource("fxml/RightPanel.fxml").toURI().toURL());
+		rightPanel.getChildren().setAll(node);
+		rightPanel.setVisible(true);
+//		rightPanel.
 	}
 
-	@FXML public void addButton() {
-		Element newElement = new Element(nameTextField.getText(), Integer.parseInt(weightTextField.getText()), containerCheckBox.isSelected());
-	}
 
-	@FXML public void backButton() {
+	@FXML public void newPackingClicked() {
+		
+	}
+	
+	@FXML public void savePackingClicked() {
+		
+	}
+	
+	@FXML public void openPackingClicked() {
 		
 	}
 
