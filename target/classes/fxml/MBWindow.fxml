@@ -15,39 +15,43 @@
 <?import javafx.scene.control.ComboBox?>
 
 <GridPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="pl.mk.mybag.front.MBWindowController">
-    <children>
-    <MenuBar id="bar" fx:id="bar" 
-    		GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
-      <menus>
-        <Menu text="File">
-          <items>
-            <MenuItem text="New" onAction="#newPackingClicked"/>
-            <MenuItem text="Save" onAction="#savePackingClicked"/>
-            <MenuItem text="Open" onAction="#newPackingClicked"/>
-          </items>
-        </Menu>
-        <Menu text="Pack">
-          <items>
-            <MenuItem text="Add Item" onAction="#showAddItemPanel"/>
-          </items>
-        </Menu>
-        <Menu text="About">
-          <items>
-            <MenuItem text="Info" onAction="#info"/>
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <VBox fx:id="leftPanel" GridPane.columnIndex="0" GridPane.rowIndex="1">
-      <ScrollPane fx:id="scrollLeft">
-        <VBox fx:id="elementsPanel"/>
-      </ScrollPane>
-      <Button fx:id="addItemButton" onAction="#showAddItemPanel"/>
-    </VBox>
-    <GridPane fx:id="rightPanel" GridPane.columnIndex="1" GridPane.rowIndex="1">
-    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
-      <Label fx:id="labelRight" text="right"/>
-    </GridPane>
-  </children>
+	fx:controller="pl.mk.mybag.front.MBWindowController">
+	<children>
+		<MenuBar id="bar" fx:id="bar" GridPane.columnIndex="0"
+			GridPane.rowIndex="0" GridPane.columnSpan="2">
+			<menus>
+				<Menu text="File">
+					<items>
+						<MenuItem text="New" onAction="#newPackingClicked" />
+						<MenuItem text="Save" onAction="#savePackingClicked" />
+						<MenuItem text="Open" onAction="#newPackingClicked" />
+					</items>
+				</Menu>
+				<Menu text="Pack">
+					<items>
+						<MenuItem text="Add Item" onAction="#showAddItemPanel" />
+					</items>
+				</Menu>
+				<Menu text="About">
+					<items>
+						<MenuItem text="Info" onAction="#info" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+		<VBox fx:id="leftPanel" GridPane.columnIndex="0"
+			GridPane.rowIndex="1">
+			<ScrollPane fx:id="scrollLeft">
+				<VBox fx:id="elementsPanel" />
+			</ScrollPane>
+			<Button fx:id="addItemButton" onAction="#showAddItemPanel" />
+		</VBox>
+		<GridPane fx:id="rightPanel" GridPane.columnIndex="1"
+			GridPane.rowIndex="1">
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10" />
+			</padding>
+			<Label fx:id="labelRight" text="right" />
+		</GridPane>
+	</children>
 </GridPane>

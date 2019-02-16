@@ -25,24 +25,33 @@ import javafx.scene.layout.VBox;
 import pl.mk.mybag.back.Element;
 
 public class MBWindowController {
-	
-	@FXML private GridPane root;
-	@FXML private MenuBar bar;
-	@FXML private VBox leftPanel;
-	@FXML private ScrollPane scrollLeft;
-	@FXML private VBox elementsPanel;	
-	@FXML private GridPane rightPanel;
-	@FXML private Label labelRight;
-	@FXML private Button addItemButton;
+
+	@FXML
+	private GridPane root;
+	@FXML
+	private MenuBar bar;
+	@FXML
+	private VBox leftPanel;
+	@FXML
+	private ScrollPane scrollLeft;
+	@FXML
+	private VBox elementsPanel;
+	@FXML
+	private GridPane rightPanel;
+	@FXML
+	private Label labelRight;
+	@FXML
+	private Button addItemButton;
 
 	private ArrayList<Element> elementList = new ArrayList<Element>();
 
-	public MBWindowController() { }
+	public MBWindowController() {
+	}
 
 	public void initialize() {
 		bar.prefWidthProperty().bind(root.widthProperty());
 		bar.setPrefHeight(100);
-
+		// rightPanel.set
 		initLeftPanel();
 	}
 
@@ -53,39 +62,43 @@ public class MBWindowController {
 		elementsPanel.prefHeightProperty().bind(leftPanel.heightProperty());
 		elementsPanel.setPadding(new Insets(15));
 		elementsPanel.setSpacing(10);
-		
+
 		addItemButton.setText("+");
 		addItemButton.prefWidthProperty().bind(leftPanel.widthProperty());
 
-		for(int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) {
 			addItem(new Element("Element " + i));
 		}
 		addItemsToPanel(elementList);
 	}
 
-	@FXML public void info() {
+	@FXML
+	public void info() {
 		rightPanel.setVisible(false);
 	}
 
-	@FXML public void showAddItemPanel() throws IOException, URISyntaxException {
-//		FXMLLoader fxmlloader = new FXMLLoader();
+	@FXML
+	public void showAddItemPanel() throws IOException, URISyntaxException {
 		Node node = (Node) FXMLLoader.load(ClassLoader.getSystemResource("fxml/RightPanel.fxml").toURI().toURL());
+
 		rightPanel.getChildren().setAll(node);
+		// rightPanel.addEventHandler(, eventHandler);
 		rightPanel.setVisible(true);
-//		rightPanel.
 	}
 
+	@FXML
+	public void newPackingClicked() {
 
-	@FXML public void newPackingClicked() {
-		
 	}
-	
-	@FXML public void savePackingClicked() {
-		
+
+	@FXML
+	public void savePackingClicked() {
+
 	}
-	
-	@FXML public void openPackingClicked() {
-		
+
+	@FXML
+	public void openPackingClicked() {
+
 	}
 
 	private void addItem(Element element) {

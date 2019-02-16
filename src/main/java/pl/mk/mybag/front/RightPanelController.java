@@ -19,28 +19,43 @@ import pl.mk.mybag.back.State;
 
 public class RightPanelController {
 
-	@FXML private GridPane addItemPanel;
-	
-	@FXML private Label nameLabel;
-	@FXML private TextField nameTextField;
-	@FXML private Label containerLabel;
-	@FXML private CheckBox containerCheckBox;
-	@FXML private Label weightLabel;
-	@FXML private TextField weightTextField;
-	@FXML private Label stateLabel;
-	@FXML private ComboBox<State> stateComboBox;
-	@FXML private Button addButton;
-	@FXML private Button backButton;
-	
-	public RightPanelController() { }
-	
-	@FXML public void addButton() {
-		Element newElement = new Element(nameTextField.getText(), Integer.parseInt(weightTextField.getText()), containerCheckBox.isSelected());
-		
+	@FXML
+	private GridPane addItemPanel;
+
+	@FXML
+	private Label nameLabel;
+	@FXML
+	private TextField nameTextField;
+	@FXML
+	private Label containerLabel;
+	@FXML
+	private CheckBox containerCheckBox;
+	@FXML
+	private Label weightLabel;
+	@FXML
+	private TextField weightTextField;
+	@FXML
+	private Label stateLabel;
+	@FXML
+	private ComboBox<State> stateComboBox;
+	@FXML
+	private Button addButton;
+	@FXML
+	private Button backButton;
+
+	public RightPanelController() {
 	}
-	
-	@FXML public void backButton() {
-		
+
+	@FXML
+	public void addButton() {
+//		Element newElement = new Element(nameTextField.getText(), Integer.parseInt(weightTextField.getText()),
+//				containerCheckBox.isSelected());
+
 	}
-	
+
+	@FXML
+	public void backButton() {
+
+	}
+
 }
