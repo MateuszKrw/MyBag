@@ -2,7 +2,6 @@
 * Author: Mateusz Krawiec
 * e-mail: mateusz.krawiec.e@gmail.com
 * 11 lut 2019
-*
 */
 
 package pl.mk.mybag.front;
@@ -16,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import pl.mk.mybag.back.Element;
 import pl.mk.mybag.back.State;
+import pl.mk.mybag.front.events.EditElementEvent;
 
 public class RightPanelController {
 
@@ -48,14 +48,32 @@ public class RightPanelController {
 
 	@FXML
 	public void addButton() {
-//		Element newElement = new Element(nameTextField.getText(), Integer.parseInt(weightTextField.getText()),
-//				containerCheckBox.isSelected());
-
+		EditElementEvent editElementEvent = new EditElementEvent(this, addItemPanel.getParent(),
+				EditElementEvent.EDIT_ITEM);
+		addItemPanel.fireEvent(editElementEvent);
 	}
 
 	@FXML
 	public void backButton() {
 
+	}
+
+	public Element getElementFromEditView() {
+		String name = "";
+		Element newElement;
+
+		if (nameTextField.getText().isEmpty()) {
+			// TODO exception: name required
+			name = "Element";
+		}
+
+		if (weightTextField.getText().isEmpty()) {
+			newElement = new Element(name, containerCheckBox.isSelected());
+		} else {
+			newElement = new Element(name, containerCheckBox.isSelected(), Integer.parseInt(weightTextField.getText()));
+		}
+
+		return newElement;
 	}
 
 }

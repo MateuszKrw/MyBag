@@ -2,7 +2,6 @@
 * Author: Mateusz Krawiec
 * e-mail: mateusz.krawiec.e@gmail.com
 * 14 gru 2018
-*
 */
 
 package pl.mk.mybag;
@@ -28,6 +27,5 @@ public class Mybag extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("MyBag");
 		primaryStage.show();
-
 	}
 }

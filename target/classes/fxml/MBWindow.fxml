@@ -29,7 +29,7 @@
 				</Menu>
 				<Menu text="Pack">
 					<items>
-						<MenuItem text="Add Item" onAction="#showAddItemPanel" />
+						<MenuItem text="Add Item" onAction="#showAddElementPanel" />
 					</items>
 				</Menu>
 				<Menu text="About">
@@ -44,7 +44,7 @@
 			<ScrollPane fx:id="scrollLeft">
 				<VBox fx:id="elementsPanel" />
 			</ScrollPane>
-			<Button fx:id="addItemButton" onAction="#showAddItemPanel" />
+			<Button fx:id="addItemButton" onAction="#showAddElementPanel" />
 		</VBox>
 		<GridPane fx:id="rightPanel" GridPane.columnIndex="1"
 			GridPane.rowIndex="1">

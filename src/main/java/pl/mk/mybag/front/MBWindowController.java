@@ -2,7 +2,6 @@
 * Author: Mateusz Krawiec
 * e-mail: mateusz.krawiec.e@gmail.com
 * 14 gru 2018
-*
 */
 
 package pl.mk.mybag.front;
@@ -10,7 +9,11 @@ package pl.mk.mybag.front;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -23,8 +26,11 @@ import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import pl.mk.mybag.back.Element;
+import pl.mk.mybag.front.events.EditElementEvent;
 
 public class MBWindowController {
+
+	public static final Logger logger = Logger.getLogger(MBWindowController.class.getName());
 
 	@FXML
 	private GridPane root;
@@ -51,8 +57,22 @@ public class MBWindowController {
 	public void initialize() {
 		bar.prefWidthProperty().bind(root.widthProperty());
 		bar.setPrefHeight(100);
-		// rightPanel.set
+		rightPanel.addEventHandler(EditElementEvent.EDIT_ITEM, event -> {
+			logger.log(Level.INFO, "Item event: " + event.getElementFromEvent());
+			elementList.add(event.getElementFromEvent());
+			refreshElementsListLeftPanel();
+		});
 		initLeftPanel();
+	}
+
+	public void refreshElementsListLeftPanel() {
+
+		
+		elementsPanel.getChildren().clear();
+
+		for (Element e : elementList) {
+			elementsPanel.getChildren().add(e);
+		}
 	}
 
 	public void initLeftPanel() {
@@ -66,10 +86,11 @@ public class MBWindowController {
 		addItemButton.setText("+");
 		addItemButton.prefWidthProperty().bind(leftPanel.widthProperty());
 
+		// Adding fake elements
 		for (int i = 0; i < 4; i++) {
 			addItem(new Element("Element " + i));
 		}
-		addItemsToPanel(elementList);
+//		refreshElementsListLeftPanel();
 	}
 
 	@FXML
@@ -78,11 +99,20 @@ public class MBWindowController {
 	}
 
 	@FXML
-	public void showAddItemPanel() throws IOException, URISyntaxException {
-		Node node = (Node) FXMLLoader.load(ClassLoader.getSystemResource("fxml/RightPanel.fxml").toURI().toURL());
+	public void showAddElementPanel() throws IOException, URISyntaxException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(getClass().getResource("/fxml/RightPanel.fxml"));
+		Node node = fxmlLoader.load();
+		RightPanelController rightPanelCcntroller = (RightPanelController) fxmlLoader.getController();
+		((GridPane) node).addEventHandler(EditElementEvent.EDIT_ITEM, new EventHandler<EditElementEvent>() {
+
+			@Override
+			public void handle(EditElementEvent event) {
+				elementList.add(event.getElementFromEvent());
+			}
+		});
 
 		rightPanel.getChildren().setAll(node);
-		// rightPanel.addEventHandler(, eventHandler);
 		rightPanel.setVisible(true);
 	}
 
@@ -105,9 +135,4 @@ public class MBWindowController {
 		elementList.add(element);
 	}
 
-	private void addItemsToPanel(ArrayList<Element> elementList) {
-		for (Element e : elementList) {
-			elementsPanel.getChildren().add(e);
-		}
-	}
 }

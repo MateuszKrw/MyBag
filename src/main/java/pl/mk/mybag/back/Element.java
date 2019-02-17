@@ -56,14 +56,15 @@ public class Element extends HBox {
 		this.nameLabel.setText(name);
 	}
 
-	public Element(String name, double weight) {
+	public Element(String name, boolean container) {
 		this(name);
-		this.weight = weight;
+		this.container = container;
+
 	}
 
-	public Element(String name, double weight, boolean container) {
-		this(name, weight);
-		this.container = container;
+	public Element(String name, boolean container, double weight) {
+		this(name, container);
+		this.weight = weight;
 	}
 
 	public boolean isContainer() {
